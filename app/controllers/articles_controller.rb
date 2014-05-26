@@ -20,7 +20,7 @@ include ArticlesHelper
 		@article.save
 		flash.notice = "Article '#{@article.title}' created!"
 
-		redirect_to article_path(@article)
+		redirect_to articles_path
 	end
 
 	def destroy
@@ -43,4 +43,9 @@ include ArticlesHelper
 		redirect_to article_path(@article)
 	end
 
+end
+
+private
+def article_params
+	  params.require(:article).permit(:title, :body, :tag_list, :image)
 end

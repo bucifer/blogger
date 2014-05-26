@@ -7,20 +7,19 @@
 </p>
 <br>
 
-<p>
-  <% if @article.image.exists? %>
-    <%= image_tag @article.image.url %>
-  <% end %>
-</p>
+<p><%= image_tag @article.image.url if @article.image.exists? %></p>
+
 
 <p><%= @article.body %></p>
 <br>
 
-<%= link_to "Edit", edit_article_path(@article) %>
-
-<br>
-
-<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+<%= link_to edit_article_path(@article) do %>
+<span class=edit>Edit</span>
+<% end %>
+<br><br>
+<%= link_to article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} do %>
+<span class=edit>Delete</span>
+<% end %>
 
 <br><br>
 
